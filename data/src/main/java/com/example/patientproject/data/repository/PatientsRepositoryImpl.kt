@@ -14,7 +14,7 @@ class PatientsRepositoryImpl @Inject constructor(private val patientsDataSource:
         return patientsDataSource.getPatients().data
     }
 
-    override suspend fun addPatient(patient: BodyAddPatientModel): AddPatientRemoteModel {
-        TODO("Not yet implemented")
+    override suspend fun addPatient(body: BodyAddPatientModel): AddPatientRemoteModel {
+        return patientsDataSource.addPatients(body)
     }
 }

@@ -8,5 +8,5 @@ interface PatientsRepository {
 
     suspend fun getPatients():List<PatientsRemoteModel>
 
-    suspend fun addPatient(patient: BodyAddPatientModel): AddPatientRemoteModel
+    suspend fun addPatient(body: BodyAddPatientModel): AddPatientRemoteModel
 }

@@ -6,7 +6,9 @@ import com.example.patientproject.domain.repository.PatientsRepository
 import javax.inject.Inject
 
 class AddPatientUseCase @Inject constructor(private val repository: PatientsRepository) {
-    suspend operator fun invoke(patient:BodyAddPatientModel):AddPatientRemoteModel{
-        return repository.addPatient(patient)
+
+
+    suspend operator fun invoke(body:BodyAddPatientModel): AddPatientRemoteModel {
+        return repository.addPatient(body)
     }
 }

@@ -4,8 +4,17 @@
     android:id="@+id/navigation_app"
     app:startDestination="@id/patientsFragment">
 
+
     <fragment
         android:id="@+id/patientsFragment"
         android:name="com.example.patientproject.presentation.features.patients.PatientsFragment"
-        android:label="PatientsFragment" />
+        android:label="PatientsFragment" >
+        <action
+            android:id="@+id/action_patientsFragment_to_addFragment"
+            app:destination="@id/addFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addFragment"
+        android:name="com.example.patientproject.presentation.features.add.AddFragment"
+        android:label="AddFragment" />
 </navigation>

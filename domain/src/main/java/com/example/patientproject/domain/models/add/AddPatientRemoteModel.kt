@@ -1,10 +1,8 @@
 package com.example.patientproject.domain.models.add
 
-import com.google.gson.annotations.SerializedName
-
 data class AddPatientRemoteModel(
-    @SerializedName("_id")
-    val id: String,
+    val __v: Int,
+    val _id: String,
     val address: String,
     val birthdate: String,
     val condition: String,

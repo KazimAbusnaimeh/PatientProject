@@ -6,5 +6,5 @@ data class BodyAddPatientModel(
     val email: String,
     val gender: String,
     val mobile: String,
-    val name: String
+    val name: String,
 )
