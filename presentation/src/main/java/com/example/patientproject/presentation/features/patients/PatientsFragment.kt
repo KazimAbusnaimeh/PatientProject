@@ -82,7 +82,7 @@ class PatientsFragment : Fragment() {
     }
 
 
-    private fun setRecyclerViewAdapter(){
+    private fun setRecyclerViewAdapter() {
         adapter = PatientsAdapter()
         binding.rvPatients.adapter = adapter
     }
