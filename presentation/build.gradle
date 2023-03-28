@@ -51,9 +51,10 @@ dependencies {
     // navigation component
     implementation "androidx.navigation:navigation-fragment-ktx:2.5.3"
 
+    //swipe refresh layout
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01"
+
 
     implementation project(":data")
     implementation project(":core")
-
-
 }

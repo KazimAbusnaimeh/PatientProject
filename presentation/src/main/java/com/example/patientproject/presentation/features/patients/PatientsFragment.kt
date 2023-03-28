@@ -14,6 +14,7 @@ import com.example.patientproject.presentation.R
 import com.example.patientproject.presentation.databinding.FragmentPatientsBinding
 import com.example.patientproject.presentation.features.patients.adapters.PatientsAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -42,6 +43,14 @@ class PatientsFragment : Fragment() {
     private fun initListener() {
         binding.fabAddPatient.setOnClickListener {
             findNavController().navigate(R.id.action_patientsFragment_to_addFragment)
+        }
+
+        binding.srlRefreshPatients.setOnRefreshListener {
+            viewModel.getPatients()
+            lifecycleScope.launch {
+                delay(3000)
+                binding.srlRefreshPatients.isRefreshing=false
+            }
         }
     }
 

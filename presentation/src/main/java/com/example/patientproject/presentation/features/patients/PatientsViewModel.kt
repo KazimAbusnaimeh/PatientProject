@@ -30,7 +30,7 @@ class PatientsViewModel @Inject constructor(private val getPatientSortedByNameUs
         getPatients()
     }
 
-    private fun getPatients() {
+    fun getPatients() {
 
         viewModelScope.launch {
             _patientsLoading.emit(true)
