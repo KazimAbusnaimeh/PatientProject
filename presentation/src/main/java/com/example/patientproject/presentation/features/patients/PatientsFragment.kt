@@ -60,7 +60,6 @@ class PatientsFragment : Fragment() {
 
     private fun handleError(e: Exception?) {
         binding.tvError.isVisible = e != null
-        binding.fabAddPatient.isVisible = e != null
     }
 
     private fun handleLoading(loading: Boolean) {
@@ -70,7 +69,6 @@ class PatientsFragment : Fragment() {
     private fun handleSuccess(list: List<PatientsRemoteModel>) {
         setRecyclerViewAdapter(list)
         binding.rvPatients.isVisible = list.isNotEmpty()
-        binding.fabAddPatient.isVisible = list.isNotEmpty()
     }
 
 
