@@ -35,6 +35,7 @@ class PatientsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setRecyclerViewAdapter()
         initObserver()
         initListener()
 
@@ -76,13 +77,13 @@ class PatientsFragment : Fragment() {
     }
 
     private fun handleSuccess(list: List<PatientsRemoteModel>) {
-        setRecyclerViewAdapter(list)
+        adapter.submitList(list)
         binding.rvPatients.isVisible = list.isNotEmpty()
     }
 
 
-    private fun setRecyclerViewAdapter(list: List<PatientsRemoteModel>) {
-        adapter = PatientsAdapter(list)
+    private fun setRecyclerViewAdapter() {
+        adapter = PatientsAdapter()
         binding.rvPatients.adapter = adapter
     }
 
