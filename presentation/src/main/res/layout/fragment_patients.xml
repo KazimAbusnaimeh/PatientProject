@@ -35,7 +35,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:spanCount="2"
-            tools:listitem="@layout/item_patient" />
+            tools:listitem="@layout/row_patient" />
 
         <TextView
             android:id="@+id/tv_error"
