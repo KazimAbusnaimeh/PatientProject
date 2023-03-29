@@ -21,51 +21,67 @@
         app:strokeColor="@{data.selected ? @color/black : @color/teal_700}"
         app:strokeWidth="3dp">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@{data.selected ? @color/teal_700 : @color/teal_200}">
+            android:background="@{data.selected ? @color/teal_700 : @color/teal_200}"
+            android:orientation="vertical">
 
             <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/image_view"
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
                 android:layout_margin="10dp"
-                tools:src="@tools:sample/avatars"
-                app:imageUrl="@{data.photo}"
                 android:scaleType="fitXY"
+                app:imageUrl="@{data.photo}"
+                tools:src="@tools:sample/avatars"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <ImageView
+                android:id="@+id/iv_delete_patient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_delete"
+                app:layout_constraintTop_toTopOf="@id/image_view"
+                app:layout_constraintEnd_toEndOf="@id/image_view"
+                android:layout_margin="10dp"
                 />
 
             <TextView
                 android:id="@+id/tv_patient_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
                 android:gravity="center"
                 android:text="@{data.name}"
                 android:textColor="@{data.selected ? @color/black : @color/white}"
                 android:textSize="15dp"
-                android:layout_marginVertical="5dp"
-                tools:text="kazim jawad" />
+                tools:text="patient name"
+                app:layout_constraintTop_toBottomOf="@id/image_view"/>
+
             <TextView
                 android:id="@+id/tv_patient_birthdate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
                 android:gravity="center"
                 android:text="@{data.birthdate}"
                 android:textColor="@{data.selected ? @color/black : @color/white}"
                 android:textSize="15dp"
-                android:layout_marginVertical="5dp"
-                tools:text="kazim jawad" />
+                tools:text="birthdate"
+                app:layout_constraintTop_toBottomOf="@id/tv_patient_name"/>
+
             <TextView
                 android:id="@+id/tv_patient_condition"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
                 android:gravity="center"
                 android:text="@{data.condition}"
                 android:textColor="@{data.selected ? @color/black : @color/white}"
                 android:textSize="15dp"
-                android:layout_marginVertical="5dp"
-                tools:text="kazim jawad" />
-        </LinearLayout>
+                tools:text="condition"
+                app:layout_constraintTop_toBottomOf="@id/tv_patient_birthdate"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </layout>

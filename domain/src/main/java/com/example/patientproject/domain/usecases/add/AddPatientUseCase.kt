@@ -1,4 +1,4 @@
-package com.example.patientproject.domain.usecases.patient
+package com.example.patientproject.domain.usecases.add
 
 import com.example.patientproject.domain.models.add.AddPatientRemoteModel
 import com.example.patientproject.domain.models.add.BodyAddPatientModel

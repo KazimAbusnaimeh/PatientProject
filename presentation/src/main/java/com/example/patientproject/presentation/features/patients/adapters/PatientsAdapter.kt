@@ -4,18 +4,19 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.patientproject.domain.models.patient.PatientsRemoteModel
-import com.example.patientproject.presentation.databinding.ItemPatientBinding
+import com.example.patientproject.presentation.databinding.RowPatientBinding
 
-class PatientsAdapter :
+class PatientsAdapter(
+    private val onDeletePatient: (id: String) -> Unit
+) :
     ListAdapter<PatientsRemoteModel, PatientsAdapter.PatientsViewHolder>(PatientDiffUtil()) {
 
     private var indexLastSelected = -1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PatientsViewHolder {
-        val binding = ItemPatientBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = RowPatientBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return PatientsViewHolder(binding)
     }
 
@@ -24,20 +25,24 @@ class PatientsAdapter :
     }
 
 
-    inner class PatientsViewHolder(private val binding: ItemPatientBinding) :
+    inner class PatientsViewHolder(private val binding: RowPatientBinding) :
         ViewHolder(binding.root) {
         fun bind(patient: PatientsRemoteModel, position: Int) {
             binding.data = patient
-            binding.root.setOnClickListener {
+            binding.cvPatientCard.setOnClickListener {
                 if (position != indexLastSelected) {
                     if (indexLastSelected != -1) {
-                        getItem(position).selected = false
+                        getItem(indexLastSelected).selected = false
                         notifyItemChanged(indexLastSelected)
                     }
                 }
                 indexLastSelected = position
                 getItem(position).selected = true
                 notifyItemChanged(position)
+            }
+
+            binding.ivDeletePatient.setOnClickListener {
+                onDeletePatient(patient.id)
             }
         }
     }
