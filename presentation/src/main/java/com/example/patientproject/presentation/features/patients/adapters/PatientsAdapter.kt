@@ -9,7 +9,8 @@ import com.example.patientproject.domain.models.patient.PatientsRemoteModel
 import com.example.patientproject.presentation.databinding.RowPatientBinding
 
 class PatientsAdapter(
-    private val onDeletePatient: (id: String) -> Unit
+    private val onDeletePatient: (id: String) -> Unit,
+    private val onItemClicked:(id:String)->Unit
 ) :
     ListAdapter<PatientsRemoteModel, PatientsAdapter.PatientsViewHolder>(PatientDiffUtil()) {
 
@@ -35,10 +36,12 @@ class PatientsAdapter(
                         getItem(indexLastSelected).selected = false
                         notifyItemChanged(indexLastSelected)
                     }
-                }
+
                 indexLastSelected = position
                 getItem(position).selected = true
-                notifyItemChanged(position)
+                notifyItemChanged(position)}
+
+                onItemClicked(patient.id)
             }
 
             binding.ivDeletePatient.setOnClickListener {

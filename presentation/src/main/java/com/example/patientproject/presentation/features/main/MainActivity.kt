@@ -1,4 +1,4 @@
-package com.example.patientproject.presentation.features
+package com.example.patientproject.presentation.features.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
