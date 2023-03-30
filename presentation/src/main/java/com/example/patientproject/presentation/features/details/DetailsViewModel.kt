@@ -17,18 +17,19 @@ class DetailsViewModel @Inject constructor(
     state: SavedStateHandle
     ):ViewModel() {
 
-    private val _addPatientsSuccess: MutableStateFlow<PatientsRemoteModel?> =
+    private val _detailsPatientsSuccess: MutableStateFlow<PatientsRemoteModel?> =
         MutableStateFlow(null)
-    val addPatientsSuccess= _addPatientsSuccess.asStateFlow()
+    val detailsPatientsSuccess= _detailsPatientsSuccess.asStateFlow()
 
-    private val _addPatientsLoading: MutableStateFlow<Boolean> =
+    private val _detailsPatientsLoading: MutableStateFlow<Boolean> =
         MutableStateFlow(false)
-    val addPatientsLoading = _addPatientsLoading.asStateFlow()
+    val detailsPatientsLoading = _detailsPatientsLoading.asStateFlow()
 
-    private val _addPatientsError: MutableStateFlow<Exception?> =
+    private val _detailsPatientsError: MutableStateFlow<Exception?> =
         MutableStateFlow(null)
-    val addPatientsError = _addPatientsError.asStateFlow()
-     val savedStateHandle=state
+    val detailsPatientsError = _detailsPatientsError.asStateFlow()
+
+     private val savedStateHandle=state
 
 init {
     getPatientDetails()
@@ -38,13 +39,13 @@ init {
 
         val id=savedStateHandle.get<String>("id")?:"-1"
         viewModelScope.launch {
-            _addPatientsLoading.emit(true)
+            _detailsPatientsLoading.emit(true)
             try {
-                _addPatientsSuccess.emit(getDetailsUseCase(id))
+                _detailsPatientsSuccess.emit(getDetailsUseCase(id))
             } catch (e: Exception) {
-                _addPatientsError.emit(e)
+                _detailsPatientsError.emit(e)
             }
-            _addPatientsLoading.emit(false)
+            _detailsPatientsLoading.emit(false)
         }
     }
 }

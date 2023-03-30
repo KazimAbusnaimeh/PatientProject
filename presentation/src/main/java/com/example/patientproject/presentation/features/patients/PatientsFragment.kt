@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -98,7 +99,8 @@ class PatientsFragment : Fragment() {
 
     private fun setRecyclerViewAdapter() {
         adapter = PatientsAdapter(
-            ::deletePatient
+            ::deletePatient,
+            ::patientDetails,
         )
         binding.rvPatients.adapter = adapter
     }
@@ -112,6 +114,10 @@ class PatientsFragment : Fragment() {
                 viewModel.deletePatient(id)
                 dialog.dismiss()
             }.show()
+    }
+
+    private fun patientDetails(id:String){
+        findNavController().navigate(R.id.action_patientsFragment_to_detailsFragment, bundleOf("id" to id))
     }
 
 }

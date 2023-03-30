@@ -12,9 +12,17 @@
         <action
             android:id="@+id/action_patientsFragment_to_addFragment"
             app:destination="@id/addFragment" />
+        <action
+            android:id="@+id/action_patientsFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment"/>
     </fragment>
     <fragment
         android:id="@+id/addFragment"
         android:name="com.example.patientproject.presentation.features.add.AddFragment"
         android:label="AddFragment" />
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.example.patientproject.presentation.features.details.DetailsFragment"
+        android:label="DetailsFragment"
+       />
 </navigation>
