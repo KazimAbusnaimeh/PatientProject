@@ -14,15 +14,15 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class DetailsFragment:Fragment() {
-    lateinit var binding:FragmentDetailsBinding
-    private val viewModel:DetailsViewModel by viewModels()
+class DetailsFragment : Fragment() {
+    lateinit var binding: FragmentDetailsBinding
+    private val viewModel: DetailsViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding=FragmentDetailsBinding.inflate(layoutInflater)
+        binding = FragmentDetailsBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -39,8 +39,8 @@ class DetailsFragment:Fragment() {
         }
         lifecycleScope.launch {
             viewModel.detailsPatientsSuccess.collect { response ->
-                if (response != null)
-                    Toast.makeText(requireContext(), response.toString(), Toast.LENGTH_LONG).show()
+                if (response != null){
+                    binding.data = response}
             }
         }
         lifecycleScope.launch {

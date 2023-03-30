@@ -20,4 +20,8 @@ data class PatientsRemoteModel(
 
     //local var
     var selected:Boolean=false
-)
+){
+    fun detailsText():String{
+        return "About: \n Email: $email \n Address: $address \n Mobile: $mobile"
+    }
+}
