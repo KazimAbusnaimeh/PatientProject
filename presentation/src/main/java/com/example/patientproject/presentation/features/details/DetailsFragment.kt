@@ -9,19 +9,21 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.example.patientproject.presentation.R
 import com.example.patientproject.presentation.databinding.FragmentDetailsBinding
+import com.example.patientproject.presentation.features.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class DetailsFragment : Fragment() {
-    lateinit var binding: FragmentDetailsBinding
+class DetailsFragment : BaseFragment<FragmentDetailsBinding>(R.id.detailsFragment) {
     private val viewModel: DetailsViewModel by viewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentDetailsBinding.inflate(layoutInflater)
         return binding.root
     }

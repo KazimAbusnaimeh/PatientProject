@@ -12,16 +12,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.patientproject.domain.models.add.AddPatientRemoteModel
 import com.example.patientproject.domain.models.add.BodyAddPatientModel
+import com.example.patientproject.presentation.R
 import com.example.patientproject.presentation.databinding.FragmentAddBinding
+import com.example.patientproject.presentation.features.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class AddFragment : Fragment() {
-
-    lateinit var binding: FragmentAddBinding
+class AddFragment : BaseFragment<FragmentAddBinding>(R.id.addFragment) {
     private val viewModel: AddPatientsViewModel by viewModels()
-
 
     override fun onCreateView(
         inflater: LayoutInflater,

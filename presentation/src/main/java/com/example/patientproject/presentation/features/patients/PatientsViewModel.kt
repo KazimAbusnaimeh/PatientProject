@@ -9,8 +9,8 @@ import com.example.patientproject.domain.models.patient.PatientsRemoteModel
 import com.example.patientproject.domain.usecases.delete.DeletePatientUseCase
 import com.example.patientproject.domain.usecases.patient.GetPatientSortedByNameUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -28,7 +28,7 @@ class PatientsViewModel @Inject constructor(
 
     private val _patientDelete: MutableLiveData<PatientDeleteResponseModel?> =
         MutableLiveData(null)
-    val patientDelete : LiveData<PatientDeleteResponseModel?> = _patientDelete
+    val patientDelete: LiveData<PatientDeleteResponseModel?> = _patientDelete
 
     private val _patientsLoading: MutableStateFlow<Boolean> =
         MutableStateFlow(true)
@@ -38,8 +38,12 @@ class PatientsViewModel @Inject constructor(
         MutableStateFlow(null)
     val patientsError = _patientsError.asStateFlow()
 
+     val test1: MutableStateFlow<List<PatientsRemoteModel>> =
+        MutableStateFlow(emptyList())
+
     init {
         getPatients()
+        test()
     }
 
     fun getPatients() {
@@ -66,5 +70,15 @@ class PatientsViewModel @Inject constructor(
             }
             _patientsLoading.emit(false)
         }
+    }
+
+    fun test() {
+        viewModelScope.launch {
+            try {
+                delay(3000)
+                test1.emit(getPatientSortedByNameUseCase())
+                delay(3000)
+                test1.emit(getPatientSortedByNameUseCase())
+            }catch (e:Exception){}        }
     }
 }
