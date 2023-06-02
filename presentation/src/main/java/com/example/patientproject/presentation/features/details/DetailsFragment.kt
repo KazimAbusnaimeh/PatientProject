@@ -52,6 +52,7 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>(R.id.detailsFragmen
             }
         }
     }
+    // new coomenet
 
 
 }
